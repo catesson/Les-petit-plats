@@ -1,0 +1,134 @@
+
+@import "../scss/variables-overrides.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+li{
+    list-style: none;
+}
+p{
+    margin: 0;
+}
+
+.cardPlat{
+    height: 364px;
+    &_image{
+        height:180px;
+    }
+    &_description{
+        height: 110px;
+    }
+}
+
+#search-ingredients{
+    background-color: $color-ingredients;
+    color:white;
+    &::placeholder{
+        color:white
+    }
+}
+
+#search-appliance{
+    background-color: $color-appareils;
+    color:white;
+    &::placeholder{
+        color:white
+    }
+}
+
+#search-ustensils{
+    background-color : $color-ustensiles ;
+    color:white;
+    &::placeholder{
+        color:white
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//TEST //custom select
+.custom-select-style {
+    width: 170px;
+    height: 56px;
+    background-color: RED;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    color: #111;
+    margin: 0;
+    text-decoration: none;
+    justify-content: center;
+    p {
+      color: white;
+      font-size: 1.2em;
+      line-height: 56px;
+     
+    }
+  }
+  
+  .custom-select-style::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "<";
+    transform: rotate(90deg);
+    width: 40px;
+    height: 56px;
+    color: #fff;
+    font-size: 1.6rem;
+    position: absolute;
+    right: 5px;
+  }
+  
+  .custom-select-style:active::after {
+  }
+  
+  /* =========== */
+  
+  .custom-list {
+    width: 100%;
+    height: 170px;
+    margin-top: -50px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    display: none;
+    background-color: RED;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .custom-list-visible {
+    display: block;
+  }
+  
+  .custom-list-element {
+    width: 150px;
+    height: 56px;
+    background-color: RED;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 0 auto;
+    font-size: 1.2em;
+    text-decoration: none;
+    cursor: pointer;
+    &:last-child {
+      border: none;
+    }
+  }
+  
+  .custom-list-element:hover {
+    //background-color: #e4fd00;
+  }

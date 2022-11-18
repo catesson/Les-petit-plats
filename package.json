@@ -1,0 +1,24 @@
+{
+  "name": "les-petit-plats",
+  "version": "1.0.0",
+  "description": "projet 7 openclasseroom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catesson/Les-petit-plats.git"
+  },
+  "author": "steven catesson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catesson/Les-petit-plats/issues"
+  },
+  "homepage": "https://github.com/catesson/Les-petit-plats#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "bootstrap-icons": "^1.10.2"
+  }
+}

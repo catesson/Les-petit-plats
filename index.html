@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les petits Plats</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="https://kit.fontawesome.com/3072e8362b.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-3">
+          <a href="#"
+            ><img src="../assets/logo.png" alt="logo les petits plats"
+          /></a>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <form>
+        <div class="input-group">
+          <input
+            type="search"
+            class="form-control form-control-lg bg-light border-0 p-3"
+            id="search-bar"
+            aria-describedby="barre de recherche"
+            placeholder="rechercher une recette"
+          />
+          <button type="submit" class="btn bg-light border-0 fs-3">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
+      
+      
+      <div class="form-outline row">
+        <div class="col-2 my-3">
+        <input type="search" class="form-control p-3 fs-3" id="search-ingredients" list="datalistOptions-ingredients" placeholder="Ingredient" aria-label="recherche ingredient">
+       </div>
+       <div class="col-2 my-3">
+        <input type="search" class="form-control p-3 fs-3" id="search-appliance" list="datalistOptions-appliance" placeholder="Appareil" aria-label="recherche appareil">
+       </div>
+       <div class="col-2 my-3">
+        <input type="search" class="form-control p-3 fs-3" id="search-ustensils" list="datalistOptions-ustensils" placeholder="Ustensiles" aria-label="recherche ustensiles">
+       </div>
+      </div>
+
+
+    </div>
+    <div class="container" >
+      <div class="row justify-content-between" id="recette-list"></div>
+    </div>
+    <!--<script src="../js/recipes.js"></script>--> 
+    <script type="module" src="../js/recettes.js"></script>
+  </body>
+</html>
