@@ -53,82 +53,99 @@ p{
 
 
 //TEST //custom select
-.custom-select-style {
-    width: 170px;
-    height: 56px;
-    background-color: RED;
-    font-size: 0.9rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    position: relative;
-    border-radius: 5px;
-    color: #111;
-    margin: 0;
-    text-decoration: none;
-    justify-content: center;
-    p {
-      color: white;
-      font-size: 1.2em;
-      line-height: 56px;
-     
-    }
-  }
-  
-  .custom-select-style::after {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    content: "<";
-    transform: rotate(90deg);
-    width: 40px;
-    height: 56px;
-    color: #fff;
-    font-size: 1.6rem;
-    position: absolute;
-    right: 5px;
-  }
-  
-  .custom-select-style:active::after {
-  }
-  
-  /* =========== */
-  
-  .custom-list {
-    width: 100%;
-    height: 170px;
-    margin-top: -50px;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    display: none;
-    background-color: RED;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .custom-list-visible {
-    display: block;
-  }
-  
-  .custom-list-element {
-    width: 150px;
-    height: 56px;
-    background-color: RED;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    margin: 0 auto;
-    font-size: 1.2em;
-    text-decoration: none;
-    cursor: pointer;
-    &:last-child {
-      border: none;
-    }
-  }
-  
-  .custom-list-element:hover {
-    //background-color: #e4fd00;
-  }
+#datalist-ingredients, #datalist-appliance, #datalist-ustensils {
+	position: relative;
+
+}
+
+#datalist-ingredients.active #datalist-ingredients-options, 
+#datalist-appliance.active #datalist-appliance-options,
+#datalist-ustensils.active #datalist-ustensils-options
+ {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+#search-ingredients, 
+#search-appliance, 
+#search-ustensils 
+{
+	padding-left: 1em;
+	width: 100%;
+	height: 54px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-sizing: border-box;
+	box-shadow: none;
+	border: none;
+	outline: 0;
+}
+
+
+
+#search-ingredients:focus,
+#search-appliance:focus,
+#search-ustensils:focus
+ {
+	border: 1px solid #AA0000;
+	outline: 0;
+}
+
+
+#datalist-ingredients.active i,
+#datalist-appliance.active i ,
+#datalist-ustensils.active i 
+{
+	transform: rotate(270deg);
+}
+
+#datalist-{
+	&ingredients-options{
+		background-color: $color-ingredients; 
+	}
+	&appliance-options{
+		background-color: $color-appareils;
+	}
+	&ustensils-options{
+		background-color: $color-ustensiles;
+	}
+}
+
+#datalist-ingredients-options,
+#datalist-appliance-options ,
+#datalist-ustensils-options 
+{
+	display: none;
+	position: absolute;
+	margin: -3px 0 0 0;
+	padding: 0;
+	width: 100%;
+	max-height: 600px;
+	top: 100%;
+	left: 0;
+	list-style: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	overflow: hidden;
+	overflow-y: auto;
+	z-index: 100;
+}
+
+#datalist-ingredients-options li,
+#datalist-appliance-options li,
+#datalist-ustensils-options li
+ {
+	display: block;
+	text-align: left;
+	color: white;
+	cursor: pointer;
+}
+
+#datalist-ingredients-options li:hover,
+#datalist-appliance-options li:hover,
+#datalist-ustensil-options li:hover
+ {
+	background: #4e00f0;
+	color: #f00;
+}

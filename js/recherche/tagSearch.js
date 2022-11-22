@@ -1,5 +1,21 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Recupere tout les tags de recherche en fonction des recette passé en paramètre
-const getTags = (recettes) => {
+export const getTags = (recettes) => {
     // récupère le tableau de recette et en fait un tableau contenant les ingrédients, les ustensils et les appareils
   const allTags = recettes.reduce(
     (acc, curr) => {
@@ -30,6 +46,7 @@ const createDatalist = (recette, type) => {
     //Selection de l'input correspondant au type
     const searchInput = document.querySelector(`#search-${type}`)
     const dataList = document.createElement("datalist")
+    dataList.id= `#search-${type}`
     searchInput.appendChild(dataList)
     let tags = []
 
@@ -54,6 +71,7 @@ const createDatalist = (recette, type) => {
       option.value = tag
       dataList.appendChild(option)
     });
+    
   }
   
   // créer les datalist de tout les élément de recherche
@@ -64,4 +82,68 @@ const createDatalist = (recette, type) => {
 
   }
 
+
+// custom dataList
+  export class DataList {
+    constructor(containerId, inputId, listId, options) {
+      this.containerId = containerId;
+      this.inputId = inputId;
+      this.listId = listId;
+      this.options = options;
+    }
+  
+    create(filter = "") {
+      const list = document.getElementById(this.listId);
+      const filterOptions = this.options.filter(
+        d => filter === "" || d.toLowerCase().includes(filter.toLocaleLowerCase())
+      );
+  
+      if (filterOptions.length === 0) {
+        list.classList.remove("active");
+      } else {
+        list.classList.add("active");
+      }
+  
+      list.innerHTML = filterOptions
+        .map(o => `<li class="fs-3 col-4 p-1" id=${o.replaceAll(" ", "-" )}>${o}</li>`)
+        .join("");
+    }
+  
+    addListeners(datalist) {
+      const container = document.getElementById(this.containerId);
+      const input = document.getElementById(this.inputId);
+      const list = document.getElementById(this.listId);
+
+      container.addEventListener("click", e => {
+        if (e.target.id === this.inputId) {
+          container.classList.toggle("active");
+          container.classList.toggle("col-6");
+          container.classList.toggle("col-2")
+        } else if (e.target.id === "datalist-icon") {
+          container.classList.toggle("active");
+          container.classList.toggle("col-6");
+          container.classList.toggle("col-2")
+          input.focus();
+        }
+      });
+  
+      input.addEventListener("input", function(e) {
+        if (!container.classList.contains("active")) {
+          container.classList.add("active");
+        } 
+  
+        datalist.create(input.value);
+      });
+  
+      list.addEventListener("click", function(e) {
+        if (e.target.nodeName.toLocaleLowerCase() === "li") {
+          input.value = e.target.innerText;
+          container.classList.toggle("active");
+          container.classList.toggle("col-6");
+          container.classList.toggle("col-2")
+        }
+      });
+    }
+  }
+  
   
