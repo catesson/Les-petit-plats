@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les petits Plats</title>
     <link rel="stylesheet" href="../css/styles.css" />
-    <script src="https://kit.fontawesome.com/3072e8362b.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3072e8362b.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header class="container py-4">
@@ -33,36 +36,58 @@
           </button>
         </div>
       </form>
-      
-      
-      <div class="form-outline row">
-        <div class="col-2 m-3 p-0" id="datalist-ingredients">
-        <input type="search" class="form-control fs-3" id="search-ingredients" list="datalist-ingredients-options" placeholder="Ingredient" aria-label="recherche ingredient">
-        <ul class="p-2" id="datalist-ingredients-options"></ul>
-       </div>
-       <div class="col-2 m-3 p-0" id="datalist-appliance">
-        <input type="search" class="form-control fs-3" id="search-appliance" list="datalist-appliance-options" placeholder="Appareil" aria-label="recherche appareil">
-        <ul class="p-2" id="datalist-appliance-options"></ul>
-       </div>
-       <div class="col-2 m-3 p-0" id="datalist-ustensils">
-        <input type="search" class="form-control fs-3" id="search-ustensils" list="datalist-ustensils-options" placeholder="Ustensiles" aria-label="recherche ustensiles">
-        <ul class="p-2" id="datalist-ustensils-options"></ul>
-       </div>
+
+      <div class="fs-3" id="chooseTags">
+        <div id="chooseTags__ingredients"></div>
+        <div id="chooseTags__appliance"></div>
+        <div id="chooseTags__ustensils"></div>
       </div>
-
-
+      <div class="form-outline row">
+        <div class="col-2 m-3 p-0 datalist" id="datalist-ingredients">
+          <input
+            type="search"
+            class="form-control fs-3"
+            id="search-ingredients"
+            list="datalist-ingredients-options"
+            placeholder="Ingredient"
+            aria-label="recherche ingredient"
+          />
+          <ul class="p-2" id="datalist-ingredients-options"></ul>
+        </div>
+        <div class="col-2 m-3 p-0 datalist" id="datalist-appliance">
+          <input
+            type="search"
+            class="form-control fs-3"
+            id="search-appliance"
+            list="datalist-appliance-options"
+            placeholder="Appareil"
+            aria-label="recherche appareil"
+          />
+          <ul class="p-2" id="datalist-appliance-options"></ul>
+        </div>
+        <div class="col-2 m-3 p-0 datalist" id="datalist-ustensils">
+          <input
+            type="search"
+            class="form-control fs-3"
+            id="search-ustensils"
+            list="datalist-ustensils-options"
+            placeholder="Ustensiles"
+            aria-label="recherche ustensiles"
+          />
+          <ul class="p-2" id="datalist-ustensils-options"></ul>
+        </div>
+      </div>
     </div>
-    <div class="container" >
+    <div class="container">
       <div class="row justify-content-between" id="recette-list"></div>
     </div>
-
 
     <!--<div id="datalist">
       <input id="datalist-input" type="text" placeholder="请选择">
       <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
       <ul id="datalist-ul"></ul>
   </div>-->
-    <!--<script src="../js/recipes.js"></script>--> 
+    <!--<script src="../js/recipes.js"></script>-->
     <script type="module" src="../js/recettes.js"></script>
   </body>
 </html>

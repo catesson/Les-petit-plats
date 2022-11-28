@@ -43,14 +43,47 @@ p{
     }
 }
 
-
-
-
-
-
-
-
-
+//MyTags
+#chooseTags{
+	display: flex;
+	justify-content: start;
+	flex-wrap: wrap;
+	
+	&__ingredients{
+		div{	
+			background-color: $color-ingredients;
+		}
+	}
+	&__appliance{
+		div{
+			background-color: $color-appareils;
+		}
+	}
+	&__ustensils{
+		div{
+			background-color: $color-ustensiles;
+		}
+	}
+}
+#chooseTags__ingredients, 
+#chooseTags__appliance,
+#chooseTags__ustensils{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+		div{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding:10px;
+			margin:5px;
+			color:white;
+			border-radius: 5px;
+			p{
+				margin-right: 5px;
+			}
+		}
+	}
 
 //TEST //custom select
 #datalist-ingredients, #datalist-appliance, #datalist-ustensils {

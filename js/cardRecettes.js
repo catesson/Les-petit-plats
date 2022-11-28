@@ -1,3 +1,4 @@
+//créer les carte contenant les recettes
 export function createRecettesCards(recette){
     const recetteList = document.querySelector("#recette-list");
 

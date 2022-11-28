@@ -10790,6 +10790,45 @@ p {
   color: white;
 }
 
+#chooseTags {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+#chooseTags__ingredients div {
+  background-color: #3282F7;
+}
+#chooseTags__appliance div {
+  background-color: #68D9A4;
+}
+#chooseTags__ustensils div {
+  background-color: #ED6454;
+}
+
+#chooseTags__ingredients,
+#chooseTags__appliance,
+#chooseTags__ustensils {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+#chooseTags__ingredients div,
+#chooseTags__appliance div,
+#chooseTags__ustensils div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  border-radius: 5px;
+}
+#chooseTags__ingredients div p,
+#chooseTags__appliance div p,
+#chooseTags__ustensils div p {
+  margin-right: 5px;
+}
+
 #datalist-ingredients, #datalist-appliance, #datalist-ustensils {
   position: relative;
 }
