@@ -74,7 +74,70 @@ const createDatalist = (recette, type) => {
 
   
 
+class Tags {
+  constructor(tag, type){
+    [this.tag = tag, 
+      //contient l'id de la div avec les tags de son type
+    this.type = type]
+  }
+  getTag(){
+    return this.tag
+  }
+  getType(){
+    return this.type
+  }
+  
+}
 
+class tabTags {
+  constructor(allTags){
+    this.allTags=allTags;
+  }
+  // ajout des tags choisie dans le tableau de tag
+  addTags(newTags, type){
+    this.allTags.push(new Tags(newTags.value, type));
+    this.createTag()
+    AllRecettes.filterRecettes(this.allTags)
+    displayRecette(AllRecettes.getRecettes());
+    
+  }
+  //suppression des tags choisis dans le tableau de tag
+  deleteTag(delTags){
+    this.allTags = this.allTags.filter(tag => tag.getTag() != delTags);
+    this.createTag()
+    AllRecettes.deleteFilterRecettes(this.allTags);
+    displayRecette(AllRecettes.getRecettes());
+  }
+  //créer les tag dans le DOM
+  createTag(){
+    
+    document.getElementById("chooseTags__ingredients").innerHTML=""
+    document.getElementById("chooseTags__appliance").innerHTML=""
+    document.getElementById("chooseTags__ustensils").innerHTML=""
+
+    this.allTags.forEach(tag => {
+      
+      const containerType = document.getElementById(tag.getType());
+      const div = document.createElement("div");
+      const text = document.createElement("p");
+      const croix = document.createElement("i");
+
+      croix.classList = ("fa-solid fa-xmark")
+     
+      
+      containerType.appendChild(div);
+      div.appendChild(text);
+      div.appendChild(croix);
+      text.innerText = tag.getTag();
+      croix.addEventListener("click",() =>{
+        this.deleteTag(text.innerText)
+      })
+      
+    })
+   
+  }
+}
+const currentTag = new tabTags([])
 
 // custom dataList
   export class DataList {
@@ -107,7 +170,7 @@ const createDatalist = (recette, type) => {
       const container = document.getElementById(this.containerId);
       // récupere tout les container datalist
       const allContainer = document.querySelectorAll(".datalist");
-
+      const inputType = this.tagContainerTypeId
       const input = document.getElementById(this.inputId);
       const list = document.getElementById(this.listId);
 
@@ -141,59 +204,21 @@ const createDatalist = (recette, type) => {
       list.addEventListener("click", function(e) {
         if (e.target.nodeName.toLocaleLowerCase() === "li") {
           input.value = e.target.textContent;
-          datalist.addTags(input.value);
+
+          currentTag.addTags(input, inputType);
           input.value="";
           
         }
       });
       
     }
-    // ajout des tags choisie dans le tableau de tag
-    addTags(newTags){
-      this.tags.push(newTags);
-      this.createTag();
-      AllRecettes.filterRecettes(newTags, this.tagContainerTypeId)
-      console.log(AllRecettes.getRecettes());
-      displayRecette(AllRecettes.getRecettes());
-      
-    }
-    //suppression des tags choisis dans le tableau de tag
-    deleteTag(delTags){
-      this.tags = this.tags.filter( function(f) { return f !== delTags});
-      this.createTag();
-      console.log(delTags)
-      AllRecettes.deleteFilterRecettes(delTags)
-      displayRecette(AllRecettes.getRecettes());
-    }
+    
     //récupération des tag choisie dans le tableau de tag
     getChooseTags(){
       return this.tags;
     }
     //créer les tag dans le DOM
-    createTag(){
-      const container = document.getElementById(this.tagContainerTypeId)
-      container.innerHTML=""
-      this.tags.forEach(tag => {
-
-
-        const div = document.createElement("div");
-        const text = document.createElement("p");
-        const croix = document.createElement("i");
-
-        croix.classList = ("fa-solid fa-xmark")
-       
-
-        container.appendChild(div);
-        div.appendChild(text);
-        div.appendChild(croix);
-        text.innerText = tag;
-        croix.addEventListener("click",() =>{
-          this.deleteTag(text.innerText)
-        })
-        
-      })
-     
-    }
+    
     //retourne le type de l'objet
     getType(){
       return this.type;
@@ -241,9 +266,11 @@ const createDatalist = (recette, type) => {
 
   //initialization des datalist
 
+
+
   const datalist = dataListAll(AllRecettes.getRecettes())
   
-  datalist.datalistIngredients.create();
+datalist.datalistIngredients.create();
   datalist.datalistIngredients.addListeners(datalist.datalistIngredients);
   
 
@@ -252,3 +279,7 @@ const createDatalist = (recette, type) => {
 
   datalist.datalistUstensils.create();
   datalist.datalistUstensils.addListeners(datalist.datalistUstensils);
+
+
+
+  
