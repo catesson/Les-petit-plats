@@ -52,5 +52,8 @@ class recetteList {
     this.currentRecettes = this.allRecettes;
     this.filterRecettes(tags);
   }
+  pushCurrentRecette(recettes){
+    this.currentRecettes = recettes
+  }
 }
 export const AllRecettes = new recetteList(recipes);

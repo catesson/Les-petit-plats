@@ -1,5 +1,6 @@
 import { AllRecettes } from "../allRecettes.js";
 import { displayRecette } from "../recettes.js";
+import {search} from "../recherche/search.js";
 
 
 // Recupere tout les tags de recherche en fonction des recette passé en paramètre
@@ -73,7 +74,7 @@ const createDatalist = (recette, type) => {
   }
 
   
-
+//class des tag qui sont dans les datalist
 class Tags {
   constructor(tag, type){
     [this.tag = tag, 
@@ -89,6 +90,7 @@ class Tags {
   
 }
 
+// tableau de tout les tag
 class tabTags {
   constructor(allTags){
     this.allTags=allTags;
@@ -97,16 +99,27 @@ class tabTags {
   addTags(newTags, type){
     this.allTags.push(new Tags(newTags.value, type));
     this.createTag()
+    
+
     AllRecettes.filterRecettes(this.allTags)
-    displayRecette(AllRecettes.getRecettes());
+
+    const findRecette = search(AllRecettes.getRecettes());  
+    
+    //AllRecettes.pushCurrentRecette(findRecette)
+    displayRecette(findRecette);
     
   }
   //suppression des tags choisis dans le tableau de tag
   deleteTag(delTags){
     this.allTags = this.allTags.filter(tag => tag.getTag() != delTags);
     this.createTag()
+    
+
     AllRecettes.deleteFilterRecettes(this.allTags);
-    displayRecette(AllRecettes.getRecettes());
+    const findRecette = search(AllRecettes.getRecettes());  
+    
+    //AllRecettes.pushCurrentRecette(findRecette)
+    displayRecette((findRecette));
   }
   //créer les tag dans le DOM
   createTag(){
@@ -200,11 +213,10 @@ const currentTag = new tabTags([])
   
         datalist.create(input.value);
       });
-  
+      // evenement au click sur un tag d'une datalist
       list.addEventListener("click", function(e) {
         if (e.target.nodeName.toLocaleLowerCase() === "li") {
           input.value = e.target.textContent;
-
           currentTag.addTags(input, inputType);
           input.value="";
           
