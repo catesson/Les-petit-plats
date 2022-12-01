@@ -19,7 +19,6 @@ class recetteList {
         );
         
         this.currentRecettes = currentRecette;
-        console.log(this.currentRecettes);
     } //chercher les recettes qui utitlise l'ustensils renseigner dans les tags 
       else if (tag.getType() === "chooseTags__ustensils") {
         const currentRecette = []
@@ -44,7 +43,6 @@ class recetteList {
             })
         })
         this.currentRecettes = currentRecette;
-        console.log(this.currentRecettes)
       }
       else {throw console.error("type de tag inconnue");}
     });
