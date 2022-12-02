@@ -5,7 +5,7 @@
 export const search = (recettes) =>{
     const searchText = document.querySelector("#search-bar").value;
     const findRecette = []
-    console.log(recettes)
+    if (searchText.length >= 3 ){
     recettes.forEach(recette => {
        
         const name = recette.name.toLowerCase()
@@ -20,5 +20,10 @@ export const search = (recettes) =>{
         else if (allIngrédients.includes(searchText)){console.log("OK ing"); findRecette.push(recette)}
         else if (description.includes(searchText)){console.log("OK desc"); findRecette.push(recette)}
     });
+    }
+    else { 
+        window.alert("minimum 3 caractère")
+        return recettes;    
+    }
     return findRecette
 }

@@ -24,6 +24,7 @@ console.log(searchBarButton)
 //evenemet au input lance l'algorithme de recherche et affiche les recettes retourné.
 searchBarButton.addEventListener('submit', function(e){
   e.preventDefault();
+ 
   const findRecette = search(AllRecettes.getRecettes());  
   displayRecette(findRecette);
   //AllRecettes.pushCurrentRecette(findRecette)
