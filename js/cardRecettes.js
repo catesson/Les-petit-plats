@@ -27,9 +27,11 @@ export function createRecettesCards(recette){
         monIngredient.appendChild(nameIngredient)
 
         nameIngredient.textContent = ingredient.ingredient
-        monIngredient.innerHTML += " " + ingredient.quantity + " " + ingredient.unit
+        monIngredient.innerHTML += " " + ingredient.quantity 
+        if (ingredient.unit){
+            monIngredient.innerHTML += " " + ingredient.unit
+        }
 
-        
     });
 
     //ajout des classes
