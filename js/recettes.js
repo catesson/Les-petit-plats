@@ -24,9 +24,15 @@ console.log(searchBarButton)
 //evenemet au input lance l'algorithme de recherche et affiche les recettes retourné.
 searchBarButton.addEventListener('submit', function(e){
   e.preventDefault();
- 
+  const searchText = document.querySelector("#search-bar").value.length;
+  if (searchText >= 3){
   const findRecette = search(AllRecettes.getRecettes());  
   displayRecette(findRecette);
+  }
+  else{
+    window.alert("minimum 3 caractère")
+  }
+  
   //AllRecettes.pushCurrentRecette(findRecette)
 });
 
