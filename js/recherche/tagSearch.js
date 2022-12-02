@@ -187,24 +187,28 @@ const currentTag = new tabTags([])
       const input = document.getElementById(this.inputId);
       const list = document.getElementById(this.listId);
 
+      document.addEventListener('click', (e) => {
+        allContainer.forEach(theContainer => {
+          const isClickInside = theContainer.contains(e.target)
+
+          if (!isClickInside) {
+            theContainer.classList.remove("active")
+            theContainer.classList.remove("col-6")
+            theContainer.classList.add("col-2")
+          }
+        })
+      })
+      
       container.addEventListener("click", e => {
         //redonne a toutes les datalist leur forme initial au focus sur un nouveau datalis
-        allContainer.forEach(theContainer => {
-          theContainer.classList.remove("active")
-          theContainer.classList.remove("col-6")
-          theContainer.classList.add("col-2")
-        })
-        if (e.target.id === this.inputId) {
-          container.classList.toggle("active");
-          container.classList.toggle("col-6");
-          container.classList.toggle("col-2")
-        } else if (e.target.id === "datalist-icon") {
+        
+        
           container.classList.toggle("active");
           container.classList.toggle("col-6");
           container.classList.toggle("col-2")
           input.focus();
         }
-      });
+      );
   
       input.addEventListener("input", function(e) {
         if (!container.classList.contains("active")) {
