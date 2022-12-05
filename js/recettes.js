@@ -30,6 +30,7 @@ searchBarButton.addEventListener('submit', function(e){
   displayRecette(findRecette);
   }
   else{
+    displayRecette(AllRecettes.getRecettes());
     window.alert("minimum 3 caractère")
   }
   
