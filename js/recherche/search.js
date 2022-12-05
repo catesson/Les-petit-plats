@@ -1,4 +1,4 @@
-// algo 2
+// algo 1
 
 //algo de recherche par rapport au input.
 export const search = (recettes) => {
