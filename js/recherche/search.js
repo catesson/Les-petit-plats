@@ -8,14 +8,12 @@ export const search = (recettes) =>{
     for (const recette of recettes){
         const name = recette.name.toLowerCase()
         const description = recette.description.toLowerCase()
-        const ingrédient = []
-        ingrédient.push(...recette.ingredients.map((ing) => ing.ingredient))
-        const allIngrédients = []
-        for (const ing of ingrédient){
-            allIngrédients.push(ing)
+        let ingrédient = ""
+        for (const ing of recette.ingredients){
+            ingrédient += " " + ing.ingredient
         }
         if (name.includes(searchText)){console.log("OK titre"); findRecette.push(recette)} 
-        else if (allIngrédients.includes(searchText)){console.log("OK ing"); findRecette.push(recette)}
+        else if (ingrédient.includes(searchText)){console.log("OK ing"); findRecette.push(recette)}
         else if (description.includes(searchText)){console.log("OK desc"); findRecette.push(recette)}
     }
     return findRecette
