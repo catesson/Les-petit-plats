@@ -15,6 +15,7 @@ export const search = (recettes) =>{
             acc += "" + cur.toLowerCase()
             return acc
         }, "")
+
         if (name.includes(searchText)){console.log("OK titre"); findRecette.push(recette)} 
         else if (allIngrédients.includes(searchText)){console.log("OK ing"); findRecette.push(recette)}
         else if (description.includes(searchText)){console.log("OK desc"); findRecette.push(recette)}
