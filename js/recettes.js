@@ -1,6 +1,6 @@
 import { createRecettesCards } from "./cardRecettes.js";
 import {AllRecettes} from "./allRecettes.js"
-import {dataListAll, dataListCreate} from "../Js/recherche/tagSearch.js"
+import {dataListCreate} from "../Js/recherche/tagSearch.js"
 import {search} from "../Js/recherche/search.js";
 
 //remet toutes les recettes du DOM à zéro
