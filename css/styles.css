@@ -10790,6 +10790,10 @@ p {
   color: white;
 }
 
+#no-recette {
+  font-size: 20px;
+}
+
 #chooseTags {
   display: flex;
   justify-content: start;
