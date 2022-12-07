@@ -103,10 +103,9 @@ class tabTags {
 
     AllRecettes.filterRecettes(this.allTags)
 
-    const findRecette = search(AllRecettes.getRecettes());  
+  search(AllRecettes.getRecettes());  
     
-    //AllRecettes.pushCurrentRecette(findRecette)
-    displayRecette(findRecette);
+ 
     
   }
   //suppression des tags choisis dans le tableau de tag
@@ -116,10 +115,8 @@ class tabTags {
     
 
     AllRecettes.deleteFilterRecettes(this.allTags);
-    const findRecette = search(AllRecettes.getRecettes());  
-    
-    //AllRecettes.pushCurrentRecette(findRecette)
-    displayRecette((findRecette));
+  search(AllRecettes.getRecettes());  
+  
   }
   //créer les tag dans le DOM
   createTag(){

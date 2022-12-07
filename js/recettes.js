@@ -4,7 +4,7 @@ import {dataListAll} from "../Js/recherche/tagSearch.js"
 import {search} from "../Js/recherche/search.js";
 
 //remet toutes les recettes du DOM à zéro
-const deleteRecettesDom = () =>{
+export const deleteRecettesDom = () =>{
   const recetteList = document.querySelector("#recette-list");
   recetteList.innerHTML=""
 }
@@ -26,15 +26,14 @@ searchBarButton.addEventListener('submit', function(e){
   e.preventDefault();
   const searchText = document.querySelector("#search-bar").value.length;
   if (searchText >= 3){
-  const findRecette = search(AllRecettes.getRecettes());  
-  displayRecette(findRecette);
+  search(AllRecettes.getRecettes());  
+
   }
   else{
     displayRecette(AllRecettes.getRecettes());
     window.alert("minimum 3 caractère")
   }
   
-  //AllRecettes.pushCurrentRecette(findRecette)
 });
 
 

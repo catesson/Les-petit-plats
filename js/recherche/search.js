@@ -1,23 +1,26 @@
 // algo 2
+import { createRecettesCards } from "../cardRecettes.js"
+import { deleteRecettesDom } from "../recettes.js";
+
 
 //algo de recherche par rapport au input.
 export const search = (recettes) => {
+  //supprime toutes les recettes afficher
+  deleteRecettesDom()
   // récupère la valeur de la bar de recherche
   const searchText = document.querySelector("#search-bar").value;
   // créer le tableau qui contiendra les recette trouver par la recherche
-  const findRecette = [];
+
   // pour toutes les recherche de la base de donnée
   recettes.forEach((recette) => {
     const name = recette.name.toLowerCase();
     if (name.includes(searchText)) {
-      console.log("OK titre");
-      findRecette.push(recette);
+      createRecettesCards(recette);
     } else {
       const description = recette.description.toLowerCase();
       // ajoute la recette s'il y a correspondance dans la description
       if (description.includes(searchText)) {
-        console.log("OK desc");
-        findRecette.push(recette);
+        createRecettesCards(recette);
       } else {
         //création du tableau d'ingrédient
         const ingrédient = [];
@@ -32,11 +35,9 @@ export const search = (recettes) => {
 
         // ajoute la recette s'il y a correspondance dans les ingrédient
         if (allIngrédients.includes(searchText)) {
-          console.log("OK ing");
-          findRecette.push(recette);
+          createRecettesCards(recette);
         }
       }
     }
   });
-  return findRecette;
 };
