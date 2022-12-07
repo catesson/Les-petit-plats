@@ -25,14 +25,13 @@ console.log(searchBarButton)
 searchBarButton.addEventListener('submit', function(e){
   e.preventDefault();
   const searchText = document.querySelector("#search-bar").value.length;
-  if (searchText >= 3){
   search(AllRecettes.getRecettes());  
+  if (searchText < 3){
+  
+    window.alert("minimum 3 caractère")
 
   }
-  else{
-    displayRecette(AllRecettes.getRecettes());
-    window.alert("minimum 3 caractère")
-  }
+ 
   
 });
 

@@ -115,7 +115,7 @@ class tabTags {
     
 
     AllRecettes.deleteFilterRecettes(this.allTags);
-  search(AllRecettes.getRecettes());  
+    search(AllRecettes.getRecettes());  
   
   }
   //créer les tag dans le DOM
