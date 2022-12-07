@@ -1,6 +1,6 @@
 import { createRecettesCards } from "./cardRecettes.js";
 import {AllRecettes} from "./allRecettes.js"
-import {dataListAll} from "../Js/recherche/tagSearch.js"
+import {dataListAll, dataListCreate} from "../Js/recherche/tagSearch.js"
 import {search} from "../Js/recherche/search.js";
 
 //remet toutes les recettes du DOM à zéro
@@ -22,13 +22,13 @@ const searchBarButton = document.getElementById("search-bar__button");
 console.log(searchBarButton)
 
 //evenemet au input lance l'algorithme de recherche et affiche les recettes retourné.
-searchBarButton.addEventListener('submit', function(e){
+searchBarButton.addEventListener('input', function(e){
   e.preventDefault();
   const searchText = document.querySelector("#search-bar").value.length;
-  search(AllRecettes.getRecettes());  
-  if (searchText < 3){
   
-    window.alert("minimum 3 caractère")
+  if (searchText > 3){
+  const findRecherche = search(AllRecettes.getRecettes());  
+  dataListCreate(findRecherche);
 
   }
  

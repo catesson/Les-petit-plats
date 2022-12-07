@@ -102,7 +102,11 @@ class tabTags {
     
 
     AllRecettes.filterRecettes(this.allTags)
-    search(AllRecettes.getRecettes())
+
+    const findRecette = search(AllRecettes.getRecettes());  
+    //met à jour la liste des tag
+    dataListCreate(findRecette)
+    
  
     
   }
@@ -113,7 +117,9 @@ class tabTags {
     
 
     AllRecettes.deleteFilterRecettes(this.allTags);
-    search(AllRecettes.getRecettes())
+    const findRecette = search(AllRecettes.getRecettes());  
+       //met à jour la liste des tag
+    dataListCreate(findRecette)
   
   }
   //créer les tag dans le DOM
@@ -145,6 +151,7 @@ class tabTags {
    
   }
 }
+//tableau des tag choisie
 const currentTag = new tabTags([])
 
 // custom dataList
@@ -223,13 +230,12 @@ const currentTag = new tabTags([])
       });
       
     }
-    
+
     //récupération des tag choisie dans le tableau de tag
     getChooseTags(){
       return this.tags;
     }
-    //créer les tag dans le DOM
-    
+  
     //retourne le type de l'objet
     getType(){
       return this.type;
@@ -237,7 +243,7 @@ const currentTag = new tabTags([])
 
   }
   
-  export const dataListAll= (currentRecette) =>{
+  export const dataListAll = (currentRecette) =>{
     //créer la liste des tag en fonction de toute les recherche
   const tagIngredients = getTags(currentRecette).ingredients 
   const tagAppliance = getTags(currentRecette).appliance 
@@ -274,23 +280,43 @@ const currentTag = new tabTags([])
     );
     return {datalistAppliance, datalistIngredients, datalistUstensils}
   }
+// met en place le listener des tag
+const datalistListener = (recettes) => {
+  const datalist = dataListAll(recettes)
 
+
+    datalist.datalistIngredients.addListeners(datalist.datalistIngredients);
+    
+
+    datalist.datalistAppliance.addListeners(datalist.datalistAppliance);
+
+    datalist.datalistUstensils.addListeners(datalist.datalistUstensils);
+  
+}
+   //met à jour la liste des tag
+export const dataListCreate = (recettes) => {
+    const datalist = dataListAll(recettes)
+  
+    datalist.datalistIngredients.create();
+      
+      
+    
+      datalist.datalistAppliance.create();
+
+    
+      datalist.datalistUstensils.create();
+
+    
+  }
   //initialization des datalist
+  const dataListInit = (recettes) => {
+    dataListCreate(recettes);
+    datalistListener(recettes);
+  }
+  //appel de la fonction pour initializer les tag (création + mise en place du listener)
+  dataListInit(AllRecettes.getRecettes());
 
-
-
-  const datalist = dataListAll(AllRecettes.getRecettes())
   
-datalist.datalistIngredients.create();
-  datalist.datalistIngredients.addListeners(datalist.datalistIngredients);
-  
-
-  datalist.datalistAppliance.create();
-  datalist.datalistAppliance.addListeners(datalist.datalistAppliance);
-
-  datalist.datalistUstensils.create();
-  datalist.datalistUstensils.addListeners(datalist.datalistUstensils);
-
 
 
   
