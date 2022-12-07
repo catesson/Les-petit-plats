@@ -30,6 +30,7 @@ searchBarButton.addEventListener('input', function(e){
   const findRecette = search(AllRecettes.getRecettes());  
    dataListCreate(findRecette)
   }
+    //si moin de 3 caractère affiche les recettes en fonction des tag
   else {
     displayRecette(AllRecettes.getRecettes());
   }
