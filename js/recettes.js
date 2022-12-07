@@ -29,8 +29,9 @@ searchBarButton.addEventListener('input', function(e){
   if (searchText > 3){
   const findRecette = search(AllRecettes.getRecettes());  
    dataListCreate(findRecette)
-
-
+  }
+  else {
+    displayRecette(AllRecettes.getRecettes());
   }
  
   
