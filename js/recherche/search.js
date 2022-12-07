@@ -1,6 +1,6 @@
 // algo 1
 import {createRecettesCards} from "../cardRecettes.js"
-import {deleteRecettesDom} from "../recettes.js"
+import {deleteRecettesDom, displayRecette} from "../recettes.js"
 
 //algo de recherche par rapport au input.
 export const search = (recettes) => {
@@ -8,6 +8,7 @@ export const search = (recettes) => {
   deleteRecettesDom();
   //récupération de la recherche dans l'input
   const searchText = document.querySelector("#search-bar").value;
+  if (searchText.length > 3){
   //pour toutes les recettes
   for (const recette of recettes) {
     const name = recette.name.toLowerCase();
@@ -35,4 +36,8 @@ export const search = (recettes) => {
       }
     }
   }
+}
+else {
+  displayRecette(recettes)
+}
 };
