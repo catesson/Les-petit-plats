@@ -4,12 +4,14 @@ import {deleteRecettesDom, displayRecette} from "../recettes.js"
 
 //algo de recherche par rapport au input.
 export const search = (recettes) => {
-  //supprime toutes les recettes du dom
-  deleteRecettesDom();
+  
+  
   //récupération de la recherche dans l'input
   const searchText = document.querySelector("#search-bar").value;
   const findRecette = []
   if (searchText.length > 3){
+    //supprime toutes les recettes du dom
+    deleteRecettesDom();
   //pour toutes les recettes
   for (const recette of recettes) {
     const name = recette.name.toLowerCase();
